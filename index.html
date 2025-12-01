@@ -81,10 +81,15 @@
         nav.scrolled { background-color: var(--color-emerald); padding: 15px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         
-        /* REPLACE THIS WITH THE SVG LOGO I GAVE YOU EARLIER FOR BEST RESULTS */
-        .logo { font-family: var(--font-heading); font-size: 1.8rem; color: white; font-weight: 700; letter-spacing: 1px; }
+        /* LOGO STYLING (NEW) */
+        .logo-link { display: block; }
+        .logo-img {
+            height: 50px; /* Restricts height so it's not too big */
+            width: auto; /* Maintains aspect ratio */
+            display: block;
+        }
         
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
         .nav-links a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
@@ -93,35 +98,42 @@
         .nav-links a:hover::after { width: 100%; }
         .hamburger { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (UPDATED WITH PATTERN) --- */
         #hero {
-            height: 100vh;
-            background: linear-gradient(rgba(15, 61, 62, 0.7), rgba(15, 61, 62, 0.5)), url('https://images.unsplash.com/photo-1633793576285-37c00506093d?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover; background-position: center 30%; background-attachment: fixed;
+            height: 90vh; /* Slightly shorter than full screen */
+            /* Using the pattern from the newsletter with a darker emerald overlay */
+            background: linear-gradient(rgba(15, 61, 62, 0.85), rgba(15, 61, 62, 0.7)), url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-size: auto; /* Pattern repeats naturally */
+            background-position: center;
+            background-attachment: fixed;
             display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            padding-top: 80px; /* Added padding to account for fixed nav */
         }
         .hero-content h1 { font-family: var(--font-heading); font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; }
         .hero-content p { font-size: 1.3rem; margin-bottom: 40px; letter-spacing: 1px; font-weight: 300; }
 
-        /* --- ABOUT GRACE SECTION (NEW!) --- */
+        /* --- ABOUT GRACE SECTION (UPDATED - NO IMAGE) --- */
         #about { background-color: white; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .about-img { height: 500px; overflow: hidden; position: relative; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; }
-        /* Gold Border effect */
-        .about-img::after {
-            content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%;
-            border: 3px solid var(--color-gold); z-index: -1;
+        /* Changed grid to block and centered text */
+        .about-container { 
+            display: block; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center;
         }
-        .about-text h3 { font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-emerald); margin-bottom: 20px; }
-        .about-text p { margin-bottom: 20px; color: #555; font-size: 1.05rem; }
+        
+        .about-text h3 { font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-emerald); margin-bottom: 20px; margin-top: 20px; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 1.05rem; line-height: 1.8; }
 
         /* --- PRODUCTS (Grace's Edit) --- */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .product-card { background: white; padding: 25px; text-align: center; transition: var(--transition); border: 1px solid #eee; }
         .product-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--color-gold-light); }
-        .product-img { height: 280px; margin-bottom: 25px; overflow: hidden; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .product-img { height: 280px; margin-bottom: 25px; overflow: hidden; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; font-style: italic; position: relative;}
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); position: relative; z-index: 2; }
+        /* Placeholder style */
+        .placeholder-text { position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #999; z-index: 1; }
+
         .product-card:hover .product-img img { transform: scale(1.05); }
         .product-title { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px; }
         .product-price { color: var(--color-emerald); font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; display: block; }
@@ -134,7 +146,7 @@
         .service-info p { font-size: 1rem; color: #777; margin-top: 5px; font-style: italic; }
         .service-price { font-size: 1.3rem; font-weight: bold; color: var(--color-gold); white-space: nowrap; }
 
-        /* --- TESTIMONIALS (NEW!) --- */
+        /* --- TESTIMONIALS --- */
         #testimonials { background-color: var(--color-emerald); color: white; }
         .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .testimonial-card { background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid rgba(212, 175, 55, 0.3); position: relative; }
@@ -148,9 +160,14 @@
             background-color: var(--color-emerald); color: white; padding: 60px; 
             max-width: 800px; margin: 0 auto; border: 3px solid var(--color-gold);
         }
-        .newsletter-form { display: flex; gap: 10px; margin-top: 30px; justify-content: center; }
-        .newsletter-form input { flex: 1; max-width: 400px; padding: 15px; border: none; outline: none; font-family: var(--font-body); }
         
+        /* --- FOOTER STYLES (New logo class) --- */
+        .footer-logo-img {
+             height: 60px; /* Slightly bigger than nav logo */
+             width: auto;
+             margin-bottom: 15px;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 3rem; }
@@ -161,8 +178,6 @@
             }
             .nav-links.active { transform: translateX(0%); }
             .hamburger { display: block; z-index: 1001; }
-            .about-grid { grid-template-columns: 1fr; }
-            .about-img { height: 350px; }
             .newsletter-form { flex-direction: column; }
             .newsletter-form input { max-width: 100%; }
              h2.section-title { font-size: 2.2rem; }
@@ -173,7 +188,10 @@
 
     <nav id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">BellaGlow.</a>
+            <a href="#" class="logo-link">
+                <img src="logo.png" alt="BellaGlow Logo" class="logo-img" style="background: rgba(255,255,255,0.2); /* Temporary background to see slot if image missing */">
+            </a>
+            
             <ul class="nav-links">
                 <li><a href="#about">Our Story</a></li>
                 <li><a href="#products">Shop</a></li>
@@ -199,16 +217,14 @@
     </header>
 
     <section id="about" class="section-padding">
-        <div class="container about-grid">
-            <div class="about-img" data-aos="fade-right" data-aos-duration="1200">
-                <img src="https://images.unsplash.com/photo-1583106836626-c53d1e9e9555?q=80&w=1974&auto=format&fit=crop" alt="Grace Njeri">
-            </div>
-            <div class="about-text" data-aos="fade-left" data-aos-duration="1200">
-                <div class="section-title-wrapper" style="justify-content: flex-start;">
-                    <div class="title-line" style="margin-left: 0;"></div>
+        <div class="container about-container">
+            <div class="about-text" data-aos="fade-up" data-aos-duration="1200">
+                <div class="section-title-wrapper">
+                    <div class="title-line"></div>
                     <h2 class="section-title" style="margin-bottom: 0;">The Founder's Touch</h2>
+                    <div class="title-line"></div>
                 </div>
-                <h3 style="margin-top: 20px;">Meet Grace Njeri</h3>
+                <h3>Meet Grace Njeri</h3>
                 <p>With five years as a senior stylist in prestigious Westlands salons, Grace founded BellaGlow in 2018 with a singular vision: to bring a personalized, hands-on approach to Kilimani's beauty scene.</p>
                 <p>"Beauty isn't just about how you look when you leave the chair; it's about the confidence you carry until your next visit. We curate not just styles, but self-care rituals."</p>
                 <a href="#services" class="btn" style="margin-top: 20px;">Experience the difference</a>
@@ -230,7 +246,8 @@
             <div class="product-grid">
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Serum">
+                        <img src="serum.jpg" alt="Kilimani Glow Serum">
+                        <span class="placeholder-text">Save file as: serum.jpg</span>
                     </div>
                     <h3 class="product-title">Kilimani Glow Serum</h3>
                     <span class="product-price">KES 3,500</span>
@@ -238,7 +255,8 @@
                 </div>
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="product-img">
-                         <img src="https://images.unsplash.com/photo-1571781535014-53bd96540d88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cream">
+                         <img src="cream.jpg" alt="Silk Press Moisture Lock">
+                        <span class="placeholder-text">Save file as: cream.jpg</span>
                     </div>
                     <h3 class="product-title">Silk Press Moisture Lock</h3>
                     <span class="product-price">KES 2,800</span>
@@ -246,7 +264,8 @@
                 </div>
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
                     <div class="product-img">
-                         <img src="https://images.unsplash.com/photo-1626285861696-9f0bf5a49c6d?q=80&w=2080&auto=format&fit=crop" alt="Olaplex">
+                         <img src="olaplex.jpg" alt="Bond Maintenance N°.4">
+                        <span class="placeholder-text">Save file as: olaplex.jpg</span>
                     </div>
                     <h3 class="product-title">Bond Maintenance N°.4</h3>
                     <span class="product-price">KES 4,500</span>
@@ -335,11 +354,14 @@
                 <h2>Unlock 10% Off Your First Visit</h2>
                 <p style="color: rgba(255,255,255,0.9); margin-top: 15px;">Join Grace's Inner Circle for exclusive beauty tips, priority booking access, and private event invitations.</p>
                 
-                <form class="newsletter-form" action="https://strathmore.us4.list-manage.com/subscribe/post?u=a87340d0e65f7285ee1627c0b&amp;id=3cdb74e02b&amp;f_id=00305ae9f0" method="post" target="_blank">
-                    <input type="email" placeholder="Your Email Address" required>
-                    <button type="submit" class="btn" style="border: 1px solid white; background: white; color: var(--color-emerald);">Subscribe</button>
+                <form action="https://strathmore.us4.list-manage.com/subscribe/post?u=a87340d0e65f7285ee1627c0b&amp;id=3cdb74e02b&amp;f_id=00305ae9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" style="display: flex; gap: 10px; margin-top: 30px; justify-content: center;">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your Email Address" required style="flex: 1; max-width: 400px; padding: 15px; border: none; outline: none; font-family: var(--font-body);">
+                    <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                        <input type="text" name="b_a87340d0e65f7285ee1627c0b_3cdb74e02b" tabindex="-1" value="">
+                    </div>
+                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn" style="border: 1px solid white; background: white; color: var(--color-emerald); cursor: pointer;">Subscribe</button>
                 </form>
-            </div>
+                 </div>
         </div>
     </section>
 
@@ -347,7 +369,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <a href="#" class="logo" style="color: var(--color-gold);">BellaGlow.</a>
+                    <a href="#" class="logo-link">
+                        <img src="logo-gold.png" alt="BellaGlow Logo" class="footer-logo-img" style="background: rgba(255,255,255,0.1); /* Temporary background to see slot if image missing */">
+                    </a>
+                    
                     <p style="margin-top: 20px;">The intersection of luxury and wellness in Kilimani.</p>
                     <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt" style="color:var(--color-gold); margin-right: 10px;"></i> Argwings Kodhek Rd, Opp Yaya Centre</p>
                 </div>
@@ -363,9 +388,8 @@
                  <div class="footer-col">
                     <h4>Hours</h4>
                     <ul>
-                        <li>Tue - Sat: 9am - 7pm</li>
-                        <li>Sun: 10am - 4pm</li>
-                        <li>Mon: Closed for Restock</li>
+                        <li>Open Daily: 8am - 8pm</li>
+                        <li>(Including Public Holidays)</li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -394,7 +418,7 @@
             once: true, // whether animation should happen only once - while scrolling down
         });
 
-        // Navigation & Mobile Menu Scripts (Same as before)
+        // Navigation & Mobile Menu Scripts
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -407,5 +431,4 @@
         });
     </script>
 </body>
-
 </html>
