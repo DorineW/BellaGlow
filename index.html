@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BellaGlow | Redefining Radiance in Kilimani</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --color-emerald: #0f3d3e;
+            --color-emerald-dark: #0a2a2b;
+            --color-gold: #d4af37;
+            --color-gold-light: #f3e5ab;
+            --color-cream: #f9f7f2;
+            --color-text: #333333;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+        
+        /* GOLD ACCENT LINES FOR TITLES */
+        .section-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .title-line { height: 2px; width: 60px; background-color: var(--color-gold); margin: 0 20px; }
+
+        h2.section-title {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--color-emerald);
+        }
+
+        p.section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block; padding: 15px 35px; background-color: var(--color-gold); color: white;
+            font-family: var(--font-body); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;
+            font-weight: 700; border: 1px solid var(--color-gold); cursor: pointer; transition: var(--transition);
+        }
+        .btn:hover { background-color: transparent; color: var(--color-gold); }
+        .btn-outline { background-color: transparent; border: 1px solid white; color: white; }
+        .btn-outline:hover { background-color: white; color: var(--color-emerald); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 0; z-index: 1000; transition: var(--transition);
+        }
+        nav.scrolled { background-color: var(--color-emerald); padding: 15px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* REPLACE THIS WITH THE SVG LOGO I GAVE YOU EARLIER FOR BEST RESULTS */
+        .logo { font-family: var(--font-heading); font-size: 1.8rem; color: white; font-weight: 700; letter-spacing: 1px; }
+        
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0;
+            background-color: var(--color-gold); transition: var(--transition);
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .hamburger { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 61, 62, 0.7), rgba(15, 61, 62, 0.5)), url('https://images.unsplash.com/photo-1633793576285-37c00506093d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center 30%; background-attachment: fixed;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .hero-content h1 { font-family: var(--font-heading); font-size: 4.5rem; margin-bottom: 20px; line-height: 1.1; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 40px; letter-spacing: 1px; font-weight: 300; }
+
+        /* --- ABOUT GRACE SECTION (NEW!) --- */
+        #about { background-color: white; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { height: 500px; overflow: hidden; position: relative; }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; }
+        /* Gold Border effect */
+        .about-img::after {
+            content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%;
+            border: 3px solid var(--color-gold); z-index: -1;
+        }
+        .about-text h3 { font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-emerald); margin-bottom: 20px; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 1.05rem; }
+
+        /* --- PRODUCTS (Grace's Edit) --- */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .product-card { background: white; padding: 25px; text-align: center; transition: var(--transition); border: 1px solid #eee; }
+        .product-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--color-gold-light); }
+        .product-img { height: 280px; margin-bottom: 25px; overflow: hidden; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .product-card:hover .product-img img { transform: scale(1.05); }
+        .product-title { font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px; }
+        .product-price { color: var(--color-emerald); font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; display: block; }
+
+        /* --- SERVICES (The Glow Menu) --- */
+        #services { background-color: #f4f1e8; /* Slightly darker cream */ }
+        .service-list { max-width: 900px; margin: 0 auto; background: white; padding: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .service-item { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dotted #ccc; padding-bottom: 15px; margin-bottom: 25px; }
+        .service-info h3 { font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-emerald); }
+        .service-info p { font-size: 1rem; color: #777; margin-top: 5px; font-style: italic; }
+        .service-price { font-size: 1.3rem; font-weight: bold; color: var(--color-gold); white-space: nowrap; }
+
+        /* --- TESTIMONIALS (NEW!) --- */
+        #testimonials { background-color: var(--color-emerald); color: white; }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .testimonial-card { background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid rgba(212, 175, 55, 0.3); position: relative; }
+        .testimonial-card i { font-size: 3rem; color: var(--color-gold); opacity: 0.5; position: absolute; top: 20px; left: 20px; }
+        .testimonial-text { font-size: 1.1rem; font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; line-height: 1.8; }
+        .client-name { font-family: var(--font-heading); color: var(--color-gold); font-size: 1.2rem; }
+
+        /* --- MAILCHIMP SECTION (Embedded) --- */
+        #newsletter-embed { background-color: white; text-align: center; }
+        .newsletter-box { 
+            background-color: var(--color-emerald); color: white; padding: 60px; 
+            max-width: 800px; margin: 0 auto; border: 3px solid var(--color-gold);
+        }
+        .newsletter-form { display: flex; gap: 10px; margin-top: 30px; justify-content: center; }
+        .newsletter-form input { flex: 1; max-width: 400px; padding: 15px; border: none; outline: none; font-family: var(--font-body); }
+        
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+            .nav-links {
+                position: absolute; right: 0px; height: 100vh; top: 0; background-color: var(--color-emerald);
+                flex-direction: column; width: 75%; justify-content: center; align-items: center;
+                transform: translateX(100%); transition: transform 0.3s ease-in-out;
+            }
+            .nav-links.active { transform: translateX(0%); }
+            .hamburger { display: block; z-index: 1001; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img { height: 350px; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form input { max-width: 100%; }
+             h2.section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">BellaGlow.</a>
+            <ul class="nav-links">
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="newsletter.html" target="_blank">The Inner Circle</a></li>
+                <li><a href="#" class="btn" style="padding: 10px 20px;">Book Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="container hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1>Redefining Radiance<br>in Kilimani</h1>
+            <p>Where Westlands expertise meets Kilimani luxury.</p>
+            <div style="margin-top: 30px;">
+                <a href="#services" class="btn">Explore Services</a>
+                <a href="#products" class="btn btn-outline" style="margin-left: 15px;">Shop Grace's Edit</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section-padding">
+        <div class="container about-grid">
+            <div class="about-img" data-aos="fade-right" data-aos-duration="1200">
+                <img src="https://images.unsplash.com/photo-1583106836626-c53d1e9e9555?q=80&w=1974&auto=format&fit=crop" alt="Grace Njeri">
+            </div>
+            <div class="about-text" data-aos="fade-left" data-aos-duration="1200">
+                <div class="section-title-wrapper" style="justify-content: flex-start;">
+                    <div class="title-line" style="margin-left: 0;"></div>
+                    <h2 class="section-title" style="margin-bottom: 0;">The Founder's Touch</h2>
+                </div>
+                <h3 style="margin-top: 20px;">Meet Grace Njeri</h3>
+                <p>With five years as a senior stylist in prestigious Westlands salons, Grace founded BellaGlow in 2018 with a singular vision: to bring a personalized, hands-on approach to Kilimani's beauty scene.</p>
+                <p>"Beauty isn't just about how you look when you leave the chair; it's about the confidence you carry until your next visit. We curate not just styles, but self-care rituals."</p>
+                <a href="#services" class="btn" style="margin-top: 20px;">Experience the difference</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="title-line"></div>
+                    <h2 class="section-title">Grace's Edit</h2>
+                    <div class="title-line"></div>
+                </div>
+                <p class="section-subtitle">Dermatologist-approved, stylist-recommended products for the modern Nairobi woman.</p>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Serum">
+                    </div>
+                    <h3 class="product-title">Kilimani Glow Serum</h3>
+                    <span class="product-price">KES 3,500</span>
+                    <button class="btn">Add to Bag</button>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="product-img">
+                         <img src="https://images.unsplash.com/photo-1571781535014-53bd96540d88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cream">
+                    </div>
+                    <h3 class="product-title">Silk Press Moisture Lock</h3>
+                    <span class="product-price">KES 2,800</span>
+                    <button class="btn">Add to Bag</button>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="product-img">
+                         <img src="https://images.unsplash.com/photo-1626285861696-9f0bf5a49c6d?q=80&w=2080&auto=format&fit=crop" alt="Olaplex">
+                    </div>
+                    <h3 class="product-title">Bond Maintenance N°.4</h3>
+                    <span class="product-price">KES 4,500</span>
+                    <button class="btn">Add to Bag</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <div class="section-title-wrapper">
+                    <div class="title-line"></div>
+                    <h2 class="section-title">The Glow Menu</h2>
+                    <div class="title-line"></div>
+                </div>
+                <p class="section-subtitle">Bespoke treatments designed for your unique needs in our Kilimani sanctuary.</p>
+            </div>
+
+            <div class="service-list" data-aos="fade-up" data-aos-duration="1200">
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>The Signature Silk Press</h3>
+                        <p>Includes deep wash, hydration treatment, and precision trim.</p>
+                    </div>
+                    <div class="service-price">KES 3,500</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>BellaGlow Gold Facial</h3>
+                        <p>60-minute exfoliation and real gold-leaf mask therapy.</p>
+                    </div>
+                    <div class="service-price">KES 4,500</div>
+                </div>
+                <div class="service-item">
+                    <div class="service-info">
+                        <h3>Protective Braiding (Knotless)</h3>
+                        <p>Pain-free installation by senior stylists. Premium extensions included.</p>
+                    </div>
+                    <div class="service-price">KES 5,000</div>
+                </div>
+                 <div class="service-item" style="border-bottom: none;">
+                    <div class="service-info">
+                        <h3>The "Westlands Standard" Blowout</h3>
+                        <p>Voluminous, long-lasting blowout using premium heat protectants.</p>
+                    </div>
+                    <div class="service-price">KES 2,500</div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 50px;" data-aos="zoom-in">
+                <button class="btn" style="padding: 20px 50px; font-size: 1rem;">Reserve Your Appointment</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section-padding">
+        <div class="container">
+             <div class="text-center" data-aos="fade-up">
+                <h2 class="section-title" style="color:white;">Kilimani Love Letters</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.7);">What our Inner Circle is saying.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-right">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"Grace has magic hands. My silk press survived a whole week of Nairobi humidity. The new salon vibe is unmatched."</p>
+                    <p class="client-name">— Sarah K.</p>
+                </div>
+                 <div class="testimonial-card" data-aos="fade-up">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"The Gold Facial is an absolute must. It’s my monthly treat. The online booking is so much easier than calling now."</p>
+                    <p class="client-name">— Amina M.</p>
+                </div>
+                 <div class="testimonial-card" data-aos="fade-left">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="testimonial-text">"Finally, a place in Kilimani that understands natural hair care without charging ridiculous prices. The products they recommend actually work."</p>
+                    <p class="client-name">— Wangari G.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter-embed" class="section-padding">
+        <div class="container" data-aos="zoom-in">
+            <div class="newsletter-box">
+                <h2>Unlock 10% Off Your First Visit</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-top: 15px;">Join Grace's Inner Circle for exclusive beauty tips, priority booking access, and private event invitations.</p>
+                
+                <form class="newsletter-form" action="PASTE_YOUR_MAILCHIMP_LINK_HERE" method="post" target="_blank">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn" style="border: 1px solid white; background: white; color: var(--color-emerald);">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: var(--color-gold);">BellaGlow.</a>
+                    <p style="margin-top: 20px;">The intersection of luxury and wellness in Kilimani.</p>
+                    <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt" style="color:var(--color-gold); margin-right: 10px;"></i> Argwings Kodhek Rd, Opp Yaya Centre</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Concierge</h4>
+                    <ul>
+                        <li><a href="#">Book Appointment</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#">Contact Grace</a></li>
+                    </ul>
+                </div>
+                 <div class="footer-col">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li>Tue - Sat: 9am - 7pm</li>
+                        <li>Sun: 10am - 4pm</li>
+                        <li>Mon: Closed for Restock</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow the Glow</h4>
+                    <div class="social-icons" style="margin-top: 20px;">
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" style="font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 BellaGlow Salon & Spa. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            offset: 120, // offset (in px) from the original trigger point
+            delay: 0, // values from 0 to 3000, with step 50ms
+            duration: 1000, // values from 0 to 3000, with step 50ms
+            easing: 'ease-in-out', // default easing for AOS animations
+            once: true, // whether animation should happen only once - while scrolling down
+        });
+
+        // Navigation & Mobile Menu Scripts (Same as before)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+        });
+    </script>
+</body>
+</html>
