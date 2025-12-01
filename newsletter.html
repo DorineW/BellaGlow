@@ -41,6 +41,7 @@
             font-weight: 700;
             margin-bottom: 30px;
             display: inline-block;
+            text-decoration: none;
         }
         h1 {
             font-family: var(--font-heading);
@@ -65,7 +66,7 @@
             font-size: 1rem; margin-top: 10px;
         }
         .btn-signup:hover { background-color: white; }
-        .back-link { margin-top: 30px; display: block; font-size: 0.9rem; opacity: 0.7; }
+        .back-link { margin-top: 30px; display: block; font-size: 0.9rem; opacity: 0.7; text-decoration: none; color: var(--color-cream);}
         .back-link:hover { opacity: 1; color: var(--color-gold); }
     </style>
 </head>
@@ -77,16 +78,19 @@
         <h1>Your Invitation to Luxury.</h1>
         <p>Join Grace's "Inner Circle" for expert beauty advice, priority booking access, and an immediate <strong>10% OFF</strong> discount code for your first product order.</p>
 
-        <form action="https://strathmore.us4.list-manage.com/subscribe/post?u=a87340d0e65f7285ee1627c0b&amp;id=3cdb74e02b&amp;f_id=00305ae9f0" method="post" target="_blank">
+        <form action="https://strathmore.us4.list-manage.com/subscribe/post?u=a87340d0e65f7285ee1627c0b&amp;id=3cdb74e02b&amp;f_id=00305ae9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
             <div class="mc-field-group">
-                <input type="email" value="" name="EMAIL" placeholder="Enter your email address..." required>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Enter your email address..." required>
             </div>
-            <button type="submit" class="btn-signup">Unlock My 10% Off</button>
-        </form>
 
+            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                <input type="text" name="b_a87340d0e65f7285ee1627c0b_3cdb74e02b" tabindex="-1" value="">
+            </div>
+
+            <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn-signup">Unlock My 10% Off</button>
+        </form>
         <a href="index.html" class="back-link">← Return to Main Website</a>
     </div>
 
 </body>
-
 </html>
