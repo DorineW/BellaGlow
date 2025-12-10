@@ -203,7 +203,7 @@
         .testimonial-text { font-size: 1.1rem; font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; line-height: 1.8; }
         .client-name { font-family: var(--font-heading); color: var(--color-gold); font-size: 1.2rem; }
 
-        /* --- MAILCHIMP SECTION (FIXED STYLING) --- */
+        /* --- MAILCHIMP SECTION (INNER CIRCLE) --- */
         #newsletter-embed { background-color: white; text-align: center; }
         .newsletter-box { 
             background-color: var(--color-emerald); color: white; padding: 60px; 
@@ -546,15 +546,18 @@
         <div class="container" data-aos="zoom-in">
             <div class="newsletter-box">
                 <h2>Unlock 10% Off Your First Visit</h2>
-                <p style="color: rgba(255,255,255,0.9); margin-top: 15px;">Join Grace's Inner Circle for exclusive beauty tips, priority booking access, and private event invitations.</p>
+                <p style="color: rgba(255,255,255,0.9); margin-top: 15px;">Join Grace's "Inner Circle" for exclusive beauty tips, priority booking access, and private event invitations.</p>
                 
                 <form action="https://strathmore.us4.list-manage.com/subscribe/post?u=a87340d0e65f7285ee1627c0b&amp;id=3cdb74e02b&amp;f_id=00305ae9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter-form" target="_blank" style="display: flex; gap: 10px; margin-top: 30px; justify-content: center;">
                     <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your Email Address" required style="flex: 1; max-width: 400px; padding: 15px; border: none; outline: none; font-family: var(--font-body);">
+                    
                     <div aria-hidden="true" style="position: absolute; left: -5000px;">
                         <input type="text" name="b_a87340d0e65f7285ee1627c0b_3cdb74e02b" tabindex="-1" value="">
                     </div>
-                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn" style="border: 1px solid white; background: white; color: var(--color-emerald); cursor: pointer;">Subscribe</button>
+                    
+                    <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn" style="border: 1px solid white; background: white; color: var(--color-emerald); cursor: pointer;">Join The Circle</button>
                 </form>
+                <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">We respect your privacy. No spam, just glow.</p>
             </div>
         </div>
     </section>
@@ -696,7 +699,9 @@
         document.getElementById('appointment-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('appointment-name').value;
-            alert(`Thank you, ${name}! Your appointment request has been submitted. We'll contact you shortly to confirm.`);
+            // NOTE: In a production environment, this is where you would link to Zapier
+            // to add this user to your Mailchimp 'Post-Care' list.
+            alert(`Thank you, ${name}! Your request is received. In the live system, this would trigger your Mailchimp 'Post-Care' automation.`);
             closeModals();
             e.target.reset();
         });
